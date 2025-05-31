@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Arivona Free Fire Tournament</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #1a1a1a; /* Light black background */
+      color: #f5f5f5;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .logo-container {
+      width: 100%;
+      height: 33vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #000;
+      padding: 20px 0;
+    }
+
+    .logo-container img {
+      max-height: 100%;
+      max-width: 90%;
+      object-fit: contain;
+    }
+
+    main {
+      padding: 20px;
+      width: 100%;
+      max-width: 600px;
+      box-sizing: border-box;
+    }
+
+    .container {
+      background-color: #2a2a2a;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(255, 215, 0, 0.2);
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #FFD700;
+      margin: 20px 0;
+      font-size: 2em;
+      text-align: center;
+      text-shadow: 1px 1px 5px #000;
+    }
+
+    h2 { /* General h2 for containers */
+      color: #FFD700;
+      margin-top: 0;
+      margin-bottom: 20px;
+      border-bottom: 2px solid #FFD700;
+      padding-bottom: 10px;
+    }
+
+    .input-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-weight: bold;
+      color: #ccc;
+      text-align: left;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #555;
+      border-radius: 5px;
+      font-size: 1em;
+      background-color: #1a1a1a;
+      color: #fff;
+      box-sizing: border-box;
+    }
+
+    .whatsapp-button,
+    .telegram-button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      display: inline-block;
+      text-align: center;
+      text-decoration: none;
+      margin-top: 10px;
+      width: 100%;
+      box-sizing: border-box;
+      transition: background-color 0.3s ease;
+    }
+
+    .whatsapp-button {
+      background-color: #25D366;
+      color: white;
+    }
+
+    .whatsapp-button:hover {
+      background-color: #1DAA50;
+    }
+
+    .telegram-button {
+      background-color: #0088cc;
+      color: white;
+      /* margin-top is adjusted below due to the new paragraph */
+    }
+
+    .telegram-button:hover {
+      background-color: #0077b5;
+    }
+
+    .telegram-section { /* Container for Telegram button and link text */
+      width: 100%;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .telegram-section p {
+      font-size: 0.85em;
+      margin-top: 8px;
+      color: #bbb;
+      word-break: break-all; /* Ensures long links don't break layout */
+    }
+
+
+    .footer {
+      margin: 30px 0;
+      font-size: 0.9em;
+      color: #aaa;
+      text-align: center;
+    }
+
+    /* Styles for the "First Rules" button - Updated to light red */
+    .golden-button { /* Keeping class name for simplicity, color changed */
+      background-color: #FF7F7F; /* Light Red */
+      color: #000; /* Black text for contrast */
+      padding: 12px 25px;
+      border: 1px solid #E06666; /* Darker Red for border */
+      border-radius: 8px;
+      font-size: 1.2em;
+      font-weight: bold;
+      cursor: pointer;
+      display: block;
+      margin: 25px auto; /* Center the button with good spacing */
+      text-align: center;
+      box-shadow: 0 3px 6px rgba(0,0,0,0.25);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .golden-button:hover {
+      background-color: #FF6A6A; /* Slightly Darker Light Red on hover */
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    }
+
+    /* Styles for the hidden rules container */
+    #rulesContainer {
+      background-color: #2a2a2a; /* Consistent with .container */
+      padding: 25px;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(255, 215, 0, 0.15);
+      margin-top: 20px;
+      margin-bottom: 30px;
+      color: #f0f0f0; /* Light text for readability */
+      text-align: left; /* Rules text alignment */
+    }
+
+    #rulesContainer h1, /* Specific for Rules H1 */
+    #rulesContainer h2 { /* Specific for Rules H2 */
+      color: #FFD700; /* Gold headings */
+      text-shadow: none; /* Remove main h1 shadow if not desired here */
+    }
+
+    #rulesContainer h1 { /* Rules Main Title */
+        font-size: 1.7em;
+        margin-bottom: 20px;
+        text-align: center; /* Center the main rules title */
+        border-bottom: none; /* No border for the main rules title */
+    }
+
+    #rulesContainer h2 { /* Rules Subtitles */
+        font-size: 1.4em;
+        margin-top: 25px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #FFD700;
+        padding-bottom: 8px;
+    }
+
+    #rulesContainer ul {
+      line-height: 1.7;
+      list-style-position: outside;
+      padding-left: 25px; /* Indent list items */
+      margin-bottom: 0; /* Remove bottom margin from ul itself */
+    }
+
+    #rulesContainer ul li {
+      margin-bottom: 12px; /* Spacing between list items */
+    }
+
+    #rulesContainer strong {
+      color: #fff; /* Make strong text stand out */
+      font-weight: 600;
+    }
+
+    #rulesContainer u {
+        text-decoration-color: #FFD700; /* Golden underline */
+        text-decoration-thickness: 1.5px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="logo-container">
+    <img src="Fire.png" alt="Tournament Logo" />
+  </div>
+
+  <main>
+    <h1>Arivona Free Fire Tournament</h1>
+
+    <button id="toggleRulesButton" class="golden-button" onclick="toggleRules()">First Rules</button>
+
+    <div id="rulesContainer" style="display: none;">
+      <h1>🔥 Free Fire Tournament Rules</h1>
+
+      <h2>📌 General Rules (General Niyam):</h2>
+      <ul>
+        <li><strong>Eligibility:</strong> Sabhi players ko deadline se pehle register karna zaroori hai. Fake ya duplicate entries disqualify kiye jayenge.</li>
+        <li><strong>Platform:</strong> Sirf Android/iOS devices allowed hai. Emulator ya cheat use allowed nahi hai.</li>
+        <li><strong>Communication:</strong> Har player ko official WhatsApp/Discord group join karna hoga tournament updates ke liye.</li>
+        <li><strong>Respect:</strong> Abusive language, hate speech ya kisi bhi player ko disrespect karna allowed nahi hai. Aise players turant disqualify honge.</li>
+        <li><strong>Decisions:</strong> Organizer ka decision final hoga har matter mein.</li>
+        <li><strong>Team Names:</strong> Agar kisi team ka naam kisi <u>person, religion, caste, ya language</u> ke basis par hoga to us team ko turant disqualify kar diya jayega.</li>
+        <li><strong>Team Size:</strong> Any team can hold only 4 members.</li>
+      </ul>
+
+      <h2>🕹️ Game Rules (Game ke Niyam):</h2>
+      <ul>
+        <li><strong>Mode:</strong> Custom Room - Squad / Duo / Solo (as per tournament type).</li>
+        <li><strong>Maps:</strong> Bermuda / Kalahari / Purgatory (match se pehle announce kiya jayega).</li>
+        <li><strong>Rounds:</strong> [Number of Matches] matches kheli jayengi. Points kills aur placement ke basis par milenge.</li>
+        <li><strong>No Show:</strong> Agar team room join nahi karti 10 minutes ke andar, to disqualify ho jayegi.</li>
+        <li><strong>Room ID/Password:</strong> Match start hone se 10 minutes pehle group mein share kiya jayega.</li>
+      </ul>
+    </div>
+
+    <div class="container">
+      <h2>किसी टीम को चुनौती दें</h2>
+      <div class="input-group">
+        <label for="challengerTeamName">आपकी टीम का नाम:</label>
+        <input type="text" id="challengerTeamName" placeholder="अपनी टीम का नाम दर्ज करें" />
+      </div>
+      <button class="whatsapp-button" onclick="sendTeamChallenge()">इनविटेशन भेजें</button>
+    </div>
+
+    <div class="telegram-section">
+      <a href="https://t.me/iampermanent" target="_blank" class="telegram-button">
+        Game Room Id Aur PW K Liye Register Kare
+      </a>
+      
+    </div>
+
+    <div class="footer">
+      <p>&copy; 2025 Arivona Free Fire Tournament</p>
+    </div>
+  </main>
+
+  <script>
+    // To ensure the displayed link matches the button's href, you could set it dynamically,
+    // though for a static link, just ensuring they match in HTML is fine.
+    // Example for dynamic update (optional, if the link could ever change via JS):
+    // const telegramButtonHref = document.querySelector('.telegram-button').href;
+    // document.getElementById('telegramLinkText').textContent = telegramButtonHref;
+
+
+    function sendTeamChallenge() {
+      const challengerTeamName = document.getElementById("challengerTeamName").value;
+      if (challengerTeamName.trim() === "") {
+        alert("कृपया अपनी टीम का नाम दर्ज करें।");
+        return;
+      }
+
+      const pageLink = window.location.href; // The URL of the current page.
+
+      // Updated WhatsApp message:
+      // "[Team Name] invites you to a Free Fire game!
+      // For more details and to join, use this link: [Link to the current page]"
+      const messageText = `${challengerTeamName} आपको Free Fire गेम के लिए आमंत्रित करता है! अधिक जानकारी और जुड़ने के लिए, इस लिंक का उपयोग करें: ${pageLink}`;
+      
+      const encodedMessage = encodeURIComponent(messageText);
+      const whatsappLink = `https://wa.me/?text=${encodedMessage}`;
+      window.open(whatsappLink, "_blank");
+    }
+
+    function toggleRules() {
+      const rulesDiv = document.getElementById('rulesContainer');
+      if (rulesDiv.style.display === 'none' || rulesDiv.style.display === '') {
+        rulesDiv.style.display = 'block';
+      } else {
+        rulesDiv.style.display = 'none';
+      }
+    }
+  </script>
+
+</body>
+        </html>
